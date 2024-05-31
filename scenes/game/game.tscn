@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnjbfy7y72anq"]
+
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_fi5tl"]
+[ext_resource type="TileSet" uid="uid://bvqby3n8g2qs" path="res://data/tileset.tres" id="2_ks5i7"]
+[ext_resource type="PackedScene" uid="uid://nt74txyyhp2d" path="res://scenes/player/player.tscn" id="3_33ixx"]
+
+[sub_resource type="Gradient" id="Gradient_6nje7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.207792, 0.402597, 0.655844, 0.876623)
+colors = PackedColorArray(0, 0.027451, 1, 1, 0.832576, 0.923893, 1.54018e-06, 1, 0, 1, 0, 1, 0.436853, 0.385263, 0.163241, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ykde6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e2hn2"]
+color_ramp = SubResource("Gradient_6nje7")
+noise = SubResource("FastNoiseLite_ykde6")
+
+[sub_resource type="Gradient" id="Gradient_3ceht"]
+offsets = PackedFloat32Array(0, 0.844156)
+colors = PackedColorArray(1, 1, 1, 1, 0, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oymny"]
+frequency = 0.35
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4f5s7"]
+color_ramp = SubResource("Gradient_3ceht")
+noise = SubResource("FastNoiseLite_oymny")
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_fi5tl")
+noise_height_texture = SubResource("NoiseTexture2D_e2hn2")
+noise_tree_texture = SubResource("NoiseTexture2D_4f5s7")
+width = 100
+height = 100
+seedName = "bob"
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("2_ks5i7")
+format = 2
+layer_0/name = "water"
+layer_0/z_index = -1
+layer_1/name = "ground_1"
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "ground_2"
+layer_2/z_index = -1
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "cliffs"
+layer_3/y_sort_enabled = true
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "environment"
+layer_4/y_sort_enabled = true
+layer_4/tile_data = PackedInt32Array()
+
+[node name="Player" parent="." instance=ExtResource("3_33ixx")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
