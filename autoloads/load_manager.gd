@@ -9,7 +9,7 @@ var _loaded_resource: PackedScene
 var _scene_path: String
 var _progress: Array = []
 
-var use_sub_threads: bool = true
+var use_sub_threads: bool = false
 
 func load_scene(scene_path: String) -> void:
 	_scene_path = scene_path
