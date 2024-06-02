@@ -32,9 +32,8 @@ y_sort_enabled = true
 script = ExtResource("1_fi5tl")
 noise_height_texture = SubResource("NoiseTexture2D_e2hn2")
 noise_tree_texture = SubResource("NoiseTexture2D_4f5s7")
-width = 100
-height = 100
-seedName = "bob"
+width = 500
+height = 500
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -58,4 +57,5 @@ layer_4/tile_data = PackedInt32Array()
 [node name="Player" parent="." instance=ExtResource("3_33ixx")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true

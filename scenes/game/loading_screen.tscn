@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4me5bc13ngqb"]
+
+[ext_resource type="Script" path="res://scenes/game/loading_screen.gd" id="1_h43wk"]
+
+[sub_resource type="Animation" id="Animation_ou7v6"]
+resource_name = "start_load"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1152, -0.25, 0, 0.104019, -1145.74, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.900936),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"loading_screen_has_full_coverage"],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vbw75"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_bbq7n"]
+resource_name = "end_load"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1152, -0.25, 0, 0.104019, -1145.74),
+"times": PackedFloat32Array(0.00140458, 0.800273)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cpi76"]
+_data = {
+"RESET": SubResource("Animation_vbw75"),
+"end_load": SubResource("Animation_bbq7n"),
+"start_load": SubResource("Animation_ou7v6")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlwci"]
+bg_color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[node name="Loading Screen" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_h43wk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cpi76")
+}
+autoplay = "start_load"
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.000976563
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hlwci")
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -13.5
+offset_right = 51.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2

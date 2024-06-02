@@ -62,23 +62,30 @@ func generate_world():
 			if height_noise_val >= 0.0:
 				
 				if height_noise_val > 0.05 and height_noise_val < 0.17 and tree_noise_val > 0.8:
+					# Palm trees on sand
 					tile_map.set_cell(environment_layer, Vector2i(x,y), source_id, palm_tree_atlas_arr.pick_random())
 				
 				if height_noise_val > 0.2:
+					# Grass on sand
 					grass_tiles_arr.append(Vector2i(x,y))
 					
 					if height_noise_val > 0.25:
 						
 						if height_noise_val < 0.35 and tree_noise_val > 0.8:
+							# Oak Tree on grass
 							tile_map.set_cell(environment_layer, Vector2i(x,y), source_id, oak_tree_atlas)
 							
-						
+						# grass/flowers on top of grass tiles.
 						tile_map.set_cell(ground_2_layer, Vector2i(x,y), source_id, grass_atlas_arr.pick_random())
 						
-					if height_noise_val > 0.4:
+					if height_noise_val > 0.5:
+						# Cliffs on grass
 						cliff_tiles_arr.append(Vector2i(x,y))
+				
+				# Sand on water
 				sand_tiles_arr.append(Vector2i(x,y))
 				
+			# Water on every tile.
 			tile_map.set_cell(water_layer, Vector2i(x,y), source_id, water_atlas)
 	
 	tile_map.set_cells_terrain_connect(ground_1_layer, sand_tiles_arr, terrain_sand_int, 0)
@@ -93,6 +100,6 @@ func _input(event):
 		camera_2d.zoom = Vector2(zoom_val,zoom_val)
 	if Input.is_action_just_pressed("zoom_out"):
 		var zoom_val = camera_2d.zoom.x + 0.1
-		if zoom_val >= 2:
-			zoom_val = 2
+		if zoom_val >= 5:
+			zoom_val = 5
 		camera_2d.zoom = Vector2(zoom_val,zoom_val)

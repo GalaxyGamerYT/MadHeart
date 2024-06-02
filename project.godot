@@ -12,14 +12,24 @@ config_version=5
 
 config/name="MadHeart"
 config/version="0.1"
-run/main_scene="res://scenes/game/game.tscn"
+run/main_scene="res://scenes/menus/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GGS="*res://addons/ggs/classes/global/ggs.tscn"
+LoadManager="*res://autoloads/load_manager.gd"
+
 [editor]
 
+export/convert_text_resources_to_binary=false
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ggs/plugin.cfg")
 
 [input]
 
