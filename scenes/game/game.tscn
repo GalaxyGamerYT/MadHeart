@@ -32,8 +32,8 @@ y_sort_enabled = true
 script = ExtResource("1_fi5tl")
 noise_height_texture = SubResource("NoiseTexture2D_e2hn2")
 noise_tree_texture = SubResource("NoiseTexture2D_4f5s7")
-width = 500
-height = 500
+width = 64
+height = 64
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
