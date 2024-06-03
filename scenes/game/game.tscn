@@ -1,43 +1,66 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnjbfy7y72anq"]
+[gd_scene load_steps=9 format=3 uid="uid://bnjbfy7y72anq"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_fi5tl"]
-[ext_resource type="TileSet" uid="uid://bvqby3n8g2qs" path="res://data/tileset.tres" id="2_ks5i7"]
+[ext_resource type="Texture2D" uid="uid://sf5r56layktj" path="res://assets/terrain/TileMap-01.png" id="2_ns7c4"]
+[ext_resource type="Script" path="res://scenes/game/TerrainGeneration2.gd" id="3_24rur"]
 [ext_resource type="PackedScene" uid="uid://nt74txyyhp2d" path="res://scenes/player/player.tscn" id="3_33ixx"]
 
-[sub_resource type="Gradient" id="Gradient_6nje7"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0.207792, 0.402597, 0.655844, 0.876623)
-colors = PackedColorArray(0, 0.027451, 1, 1, 0.832576, 0.923893, 1.54018e-06, 1, 0, 1, 0, 1, 0.436853, 0.385263, 0.163241, 1)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h3o0o"]
+texture = ExtResource("2_ns7c4")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ykde6"]
+[sub_resource type="TileSet" id="TileSet_lm2n5"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_h3o0o")
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e2hn2"]
-color_ramp = SubResource("Gradient_6nje7")
-noise = SubResource("FastNoiseLite_ykde6")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxbmc"]
+texture = ExtResource("2_ns7c4")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
 
-[sub_resource type="Gradient" id="Gradient_3ceht"]
-offsets = PackedFloat32Array(0, 0.844156)
-colors = PackedColorArray(1, 1, 1, 1, 0, 1, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_oymny"]
-frequency = 0.35
-fractal_octaves = 1
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4f5s7"]
-color_ramp = SubResource("Gradient_3ceht")
-noise = SubResource("FastNoiseLite_oymny")
+[sub_resource type="TileSet" id="TileSet_wxgx5"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_yxbmc")
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_fi5tl")
-noise_height_texture = SubResource("NoiseTexture2D_e2hn2")
-noise_tree_texture = SubResource("NoiseTexture2D_4f5s7")
-width = 64
-height = 64
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 y_sort_enabled = true
-tile_set = ExtResource("2_ks5i7")
+tile_set = SubResource("TileSet_lm2n5")
 format = 2
 layer_0/name = "water"
 layer_0/z_index = -1
@@ -54,8 +77,13 @@ layer_4/name = "environment"
 layer_4/y_sort_enabled = true
 layer_4/tile_data = PackedInt32Array()
 
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_wxgx5")
+format = 2
+script = ExtResource("3_24rur")
+
 [node name="Player" parent="." instance=ExtResource("3_33ixx")]
+z_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
 position_smoothing_enabled = true
