@@ -36,7 +36,7 @@ var grass_atlas_arr = [Vector2i(1,0),Vector2i(2,0),Vector2i(3,0),Vector2i(4,0),V
 var palm_tree_atlas_arr = [Vector2i(12,2), Vector2i(15,2)]
 var oak_tree_atlas = Vector2i(15,6)
 
-@export var seedName := ""
+@export var seedName := GameController.seed
 var set_seed : int
 
 func _ready():
