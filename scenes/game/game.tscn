@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnjbfy7y72anq"]
+[gd_scene load_steps=10 format=3 uid="uid://bnjbfy7y72anq"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_fi5tl"]
-[ext_resource type="Texture2D" uid="uid://sf5r56layktj" path="res://assets/terrain/TileMap-01.png" id="2_ns7c4"]
+[ext_resource type="Texture2D" uid="uid://bgrnwaahm8a3d" path="res://assets/terrain/terrain.png" id="2_qan5j"]
 [ext_resource type="Script" path="res://scenes/game/TerrainGeneration2.gd" id="3_24rur"]
-[ext_resource type="PackedScene" uid="uid://nt74txyyhp2d" path="res://scenes/player/player.tscn" id="3_33ixx"]
+[ext_resource type="PackedScene" uid="uid://be0xfr61e64eb" path="res://scenes/player/player.tscn" id="3_33ixx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dtmpv"]
+load_path = "res://.godot/imported/TileMap-01.png-4829cd2213d7de0609851e549e726a7a.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h3o0o"]
-texture = ExtResource("2_ns7c4")
+texture = SubResource("CompressedTexture2D_dtmpv")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -29,9 +32,9 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_h3o0o")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxbmc"]
-texture = ExtResource("2_ns7c4")
-texture_region_size = Vector2i(64, 64)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_abtd4"]
+texture = ExtResource("2_qan5j")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -50,8 +53,8 @@ texture_region_size = Vector2i(64, 64)
 3:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_wxgx5"]
-tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_yxbmc")
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_abtd4")
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -84,6 +87,7 @@ script = ExtResource("3_24rur")
 
 [node name="Player" parent="." instance=ExtResource("3_33ixx")]
 z_index = 1
+SPEED = 150.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true

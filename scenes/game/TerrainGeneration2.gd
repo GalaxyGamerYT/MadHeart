@@ -1,13 +1,12 @@
 extends TileMap
 
-
-var moisture = FastNoiseLite.new() # X Offset
-var temperature = FastNoiseLite.new() # Y Offset
-var altitude = FastNoiseLite.new() # Oceans
+var moisture = FastNoiseLite.new() #X Offset
+var temperature = FastNoiseLite.new()# Y Offset
+var altitude = FastNoiseLite.new()# Oceans
 
 @export var width: int = 64
 @export var height: int = 64
-@export var seedName := GameController.seed
+@export var seedName :String = GameController.seed
 
 @onready var player = get_tree().current_scene.get_node("Player")
 
@@ -16,19 +15,20 @@ var set_seed: int
 
 var scource_id: int = 0
 
-var time_since_chunk_loaded
-var chunks_to_be_loaded = []
-
 func _ready():
 	randomize()	
 	if seedName:
-		set_seed = hash(seedName)
+		if seedName.is_valid_int():
+			set_seed = int(seedName)
+		else:
+			set_seed = hash(seedName)
 	else:
 		set_seed = randi()
 	
 	moisture.seed = set_seed
 	temperature.seed = set_seed
 	altitude.seed = set_seed
+	GameController.seed = str(set_seed)
 	
 	altitude.frequency = 0.01
 
@@ -49,6 +49,7 @@ func generate_chunk(pos):
 			
 			if alt < 0:
 				set_cell(0, Vector2i(pos.x - (width/2) + x, pos.y - (height/2) + y), scource_id, Vector2i(3, round(3 * (temp + 10) / 20)))
+				
 			else:
 				set_cell(0, Vector2i(pos.x - (width/2) + x, pos.y - (height/2) + y), scource_id, Vector2i(round(3 * (moist + 10) / 20), round(3 * (temp + 10) / 20)))
 			

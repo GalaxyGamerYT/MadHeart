@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck38bff48wgrv"
-path="res://.godot/imported/water.png-53c330365040eecfec4fe8aefa28d46a.ctex"
+uid="uid://02fvbq2lokpg"
+path="res://.godot/imported/taiga_.png-90d13bf5727a976bc9aa70a05c9d165d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Paradise_Asset_Pack_FREE/TileSets/Animated_Tiles/water.png"
-dest_files=["res://.godot/imported/water.png-53c330365040eecfec4fe8aefa28d46a.ctex"]
+source_file="res://assets/terrain/taiga_.png"
+dest_files=["res://.godot/imported/taiga_.png-90d13bf5727a976bc9aa70a05c9d165d.ctex"]
 
 [params]
 

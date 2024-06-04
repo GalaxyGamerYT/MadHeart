@@ -16,3 +16,5 @@ func _input(event):
 		if zoom_val >= max_zoom:
 			zoom_val = max_zoom
 		camera_2d.zoom = Vector2(zoom_val,zoom_val)
+	if Input.is_action_just_pressed("show_seed"):
+		print("Seed: "+str(GameController.seed))
