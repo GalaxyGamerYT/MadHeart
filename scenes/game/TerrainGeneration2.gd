@@ -1,8 +1,8 @@
 extends TileMap
 
-var moisture = FastNoiseLite.new() #X Offset
-var temperature = FastNoiseLite.new()# Y Offset
-var altitude = FastNoiseLite.new()# Oceans
+var moisture = FastNoiseLite.new() # X Offset
+var temperature = FastNoiseLite.new() # Y Offset
+var altitude = FastNoiseLite.new() # Oceans
 
 @export var width: int = 64
 @export var height: int = 64
@@ -13,7 +13,7 @@ var altitude = FastNoiseLite.new()# Oceans
 var loaded_chunks = []
 var set_seed: int
 
-var scource_id: int = 0
+@export var scource_id: int = 1
 
 func _ready():
 	randomize()	
@@ -48,10 +48,12 @@ func generate_chunk(pos):
 			var alt = altitude.get_noise_2d(pos.x - (width/2) + x, pos.y - (height/2) + y) * 10
 			
 			if alt < 0:
-				set_cell(0, Vector2i(pos.x - (width/2) + x, pos.y - (height/2) + y), scource_id, Vector2i(3, round(3 * (temp + 10) / 20)))
+				set_cell(0, Vector2i(pos.x - (width/2) + x, pos.y - (height/2) + y), scource_id, Vector2(3, round(3 * (temp + 10) / 20)))
+			elif alt <= 0.5:
+				set_cell(0, Vector2i(pos.x - (width/2) + x, pos.y - (height/2) + y), scource_id, Vector2(1,2))
 				
 			else:
-				set_cell(0, Vector2i(pos.x - (width/2) + x, pos.y - (height/2) + y), scource_id, Vector2i(round(3 * (moist + 10) / 20), round(3 * (temp + 10) / 20)))
+				set_cell(0, Vector2i(pos.x - (width/2) + x, pos.y - (height/2) + y), scource_id, Vector2(round(3 * (moist + 10) / 20), round(3 * (temp + 10) / 20)))
 			
 			if Vector2i(pos.x, pos.y) not in loaded_chunks:
 				loaded_chunks.append(Vector2i(pos.x, pos.y))
