@@ -8,7 +8,7 @@ var altitude = FastNoiseLite.new() # Oceans
 @export var height: int = 64
 @export var seedName :String = GameController.seed
 
-@onready var player = get_tree().current_scene.get_node("Player")
+@onready var player = $"../Player"
 
 var loaded_chunks = []
 var set_seed: int
