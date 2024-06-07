@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbf7e266a27a2"]
+
+[ext_resource type="Script" path="res://scenes/menus/settings_menu/settings_menu.gd" id="1_o3yua"]
+[ext_resource type="FontFile" uid="uid://b3ualvhd48xh1" path="res://assets/fonts/PixelOperator8.ttf" id="2_4u1ss"]
+[ext_resource type="FontFile" uid="uid://byy8c6uknahne" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_tjfi7"]
+
+[node name="Settings Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o3yua")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tjfi7")
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Fullscreen" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Fullscreen"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4u1ss")
+theme_override_font_sizes/font_size = 32
+text = "Fullscreen"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Master" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Master"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4u1ss")
+theme_override_font_sizes/font_size = 32
+text = "Master"
+
+[node name="Music" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Music"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4u1ss")
+theme_override_font_sizes/font_size = 32
+text = "Music"
+
+[node name="Sfx" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Sfx"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4u1ss")
+theme_override_font_sizes/font_size = 32
+text = "Sfx"
+
+[node name="Back Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("2_tjfi7")
+theme_override_font_sizes/font_size = 48
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back Button" to="." method="_on_back_button_pressed"]

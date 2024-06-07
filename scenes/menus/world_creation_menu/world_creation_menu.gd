@@ -8,7 +8,7 @@ var game_scene = "res://scenes/game/game.tscn"
 
 var last_world_num: int = 0
 
-# Called when the node enters the scene tree for the first time.
+# Called when the node enters the scene tree for qthe first time.
 func _ready():
 	pass
 
@@ -30,5 +30,10 @@ func _on_create_btn_pressed():
 		seed = seed_text
 	GameController.seed = seed
 	
+	print("Play")
 	LoadManager.load_scene(game_scene)
 	
+
+
+func _on_back_btn_pressed():
+	get_tree().change_scene_to_packed(SceneController.main_menu_scene)
