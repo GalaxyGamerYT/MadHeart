@@ -30,5 +30,6 @@ func _on_create_btn_pressed():
 		seed = seed_text
 	GameController.seed = seed
 	
+	print("Play")
 	LoadManager.load_scene(game_scene)
 	
