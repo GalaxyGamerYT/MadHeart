@@ -34,7 +34,7 @@ func _on_save_btn_pressed():
 
 
 func _on_options_btn_pressed():
-	var settings_dialog:ConfirmationDialog = GameController.settings_dialog_scene.instantiate()
+	var settings_dialog:ConfirmationDialog = SceneController.settings_dialog_scene.instantiate()
 	settings_dialog.title = "Settings"
 	add_child(settings_dialog)
 	

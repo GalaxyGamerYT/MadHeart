@@ -4,4 +4,4 @@ var seed: String = ""
 
 var world_name: String = "World 1"
 
-var settings_dialog_scene = preload("res://addons/SEAL/visualizers/SettingsDialog.tscn")
+var global_settings_GSON = "res://data/global_settings.GSON"

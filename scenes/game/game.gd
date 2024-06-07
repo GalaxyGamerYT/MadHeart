@@ -36,7 +36,7 @@ func show_settings():
 	#print("Settings function")
 	#pass
 	
-	var settings_dialog:ConfirmationDialog = GameController.settings_dialog_scene.instantiate()
+	var settings_dialog:ConfirmationDialog = SceneController.settings_dialog_scene.instantiate()
 	settings_dialog.title = "Global settings"
 	add_child(settings_dialog)
 	
