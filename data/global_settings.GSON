@@ -8,13 +8,13 @@
 "value": false
 },
 "Window Mode": {
-"allowed_values": Array[String](["Fullscreen", "Borderless Fullscren", "Windowed", "Borderless Windowed"]),
+"allowed_values": Array[String](["Windowed", "Borderless Windowed", "Fullscreen", "Borderless Fullscreen"]),
 "default_value": "Windowed",
 "group": "window",
 "identifier": "Window Mode",
 "setting_type": "MultiChoiceSetting",
 "tooltip": "Controls the window mode.",
-"value": "Windowed"
+"value": "Borderless Fullscreen"
 },
 "down Key": {
 "default_value_key_code": 0,
